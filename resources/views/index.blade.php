@@ -1124,14 +1124,14 @@
 </div>
 
 <!-- Jquery Core Js -->
-<script src="../../assets/bundles/libscripts.bundle.js"></script>
+<script src="{{ public_path().'/bundles/libscripts.bundle.js' }}"></script>
 
 <!-- Plugin Js -->
-<script src="../../assets/bundles/apexcharts.bundle.js"></script>
-<script src="../../assets/bundles/dataTables.bundle.js"></script>
+<script src="{{ public_path().'/bundles/apexcharts.bundle.js' }}"></script>
+<script src="{{ public_path().'/bundles/dataTables.bundle.js' }}"></script>
 
 <!-- Jquery Page Js -->
-<script src="../../assets/js/template.js"></script>
-<script src="../js/page/index.js"></script>
+<script src="{{ public_path().'/js/template.js' }}"></script>
+<script src="{{ public_path().'/js/page/index.js' }}"></script>
 </body>
 </html>
