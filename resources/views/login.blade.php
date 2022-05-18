@@ -42,7 +42,7 @@
                                 <div class="col-12 mb-4 d-grid">
                                     <a class="btn btn-lg btn-outline-secondary" href="#">
                                         <span class="d-flex justify-content-center align-items-center">
-                                            <img class="avatar xs me-2" src=".{{ public_path().'/images/google.svg' }}" alt="Image Description">
+                                            <img class="avatar xs me-2" src="{{ public_path().'/images/google.svg' }}" alt="Image Description">
                                             Sign in with Google
                                         </span>
                                     </a>
