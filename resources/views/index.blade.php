@@ -11,7 +11,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
 
     <!-- plugin css file  -->
-    <link rel="stylesheet" href="{{ public_path().'/css/dataTables.min.css' }}">
+    <link rel="stylesheet" href="{{ asset('/css/dataTables.min.css') }}">
     
     <!-- project css file  -->
     <link rel="stylesheet" href="{{ public_path().'/css/al.style.min.css' }}">
