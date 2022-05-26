@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('login');
 });
+
+Route::post('/', 'App\Http\Controllers\UserController@userlogin')->name('login');
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/dash/', function () {
+        return view('dash');
+    })->name('dash');
+    Route::get('/logout/', 'App\Http\Controllers\UserController@userlogout');
+
+
+});
