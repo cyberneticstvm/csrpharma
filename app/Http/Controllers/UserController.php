@@ -37,8 +37,7 @@ class UserController extends Controller
         $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials)) {
             $user_id = Auth::user()->id;
-            return redirect()->route('dash')
-                        ->with('success','User logged in successfully');
+            return redirect()->route('dash')->with('success','User logged in successfully');
         }  
         return redirect("/")->withErrors('Login details are not valid');
     }
@@ -51,7 +50,8 @@ class UserController extends Controller
 
     public function index()
     {
-        //
+        $users = User::get();
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -61,8 +61,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $permission = Permission::get();
-        return view('user.create',compact('permission'));
+        $roles = Role::pluck('name','name')->all();
+        return view('user.create', compact('roles'));
     }
 
     /**
@@ -73,7 +73,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'username' => 'required|unique:users,username',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+            'roles' => 'required'
+        ]);
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+    
+        $user = User::create($input);
+        $user->assignRole($request->input('roles'));
+    
+        return redirect()->route('user.index')
+                        ->with('success','User created successfully');
     }
 
     /**
@@ -95,7 +109,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name','name')->all();
+    
+        return view('user.edit',compact('user','roles','userRole'));
     }
 
     /**
@@ -107,7 +125,28 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'username' => 'required|unique:users,username,'.$id,
+            'email' => 'required|email|unique:users,email,'.$id,
+            'roles' => 'required'
+        ]);
+    
+        $input = $request->all();
+        if(!empty($input['password'])){ 
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = Arr::except($input,array('password'));    
+        }
+    
+        $user = User::find($id);
+        $user->update($input);
+        DB::table('model_has_roles')->where('model_id',$id)->delete();
+    
+        $user->assignRole($request->input('roles'));
+    
+        return redirect()->route('user.index')
+                        ->with('success','User updated successfully');
     }
 
     /**
@@ -118,6 +157,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('user.index')
+                        ->with('success','User deleted successfully');
     }
 }

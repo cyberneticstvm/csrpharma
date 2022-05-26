@@ -18,9 +18,10 @@
 
     <!-- project layout css file -->
     <link rel="stylesheet" href="{{ public_path().'/css/layout.a.min.css' }}">
+    <link rel="stylesheet" href="{{ public_path().'/css/style.css' }}">
 </head>
 
-<body>
+<body class="font-opensans">
 
 <div id="layout-a" class="theme-cyan">
 
@@ -28,7 +29,7 @@
     <div class="navigation navbar navbar-light justify-content-center px-3 px-lg-2 py-2 py-md-3 border-end">
 
         <!-- Brand -->
-        <a href="/" class="mb-0 mb-lg-3 brand-icon">
+        <a href="/dash/" class="mb-0 mb-lg-3 brand-icon">
             <img src="{{ public_path().'/images/csrpharma/csr-logo.png' }}" width="50%" class="img-fluid"/>
         </a>
 
@@ -37,15 +38,11 @@
 
             <!-- Create group -->
             <li class="nav-item"><a class="nav-link p-2 p-lg-3 d-block d-xl-none menu-toggle me-2 me-lg-0" href="#"><i class="fa fa-bars"></i></a></li>
-            <li class="nav-item"><a class="nav-link p-2 p-lg-3" href="#" title="Search" data-bs-toggle="modal" data-bs-target="#SearchModal"><i class="fa fa-search"></i></a></li>
             <li class="nav-item"><a class="nav-link p-2 p-lg-3" href="#" title="notifications" data-bs-toggle="modal" data-bs-target="#notificationsModal"><i class="fa fa-bell-o"></i></a></li>
-            <li class="nav-item"><a class="nav-link p-2 p-lg-3" href="#" data-bs-toggle="modal" data-bs-target="#LayoutModal"><i class="fa fa-sliders"></i></a>
-            <li class="nav-item d-none d-sm-block"><a class="nav-link p-2 p-lg-3" href="chat.html"><i class="fa fa-comments-o"></i></a></li>
-            <li class="nav-item d-none d-sm-block flex-grow-1"><a class="nav-link p-2 p-lg-3" href="calendar.html"><i class="fa fa-calendar"></i></a></li>
 
             <!-- Menu collapse -->
             <li class="nav-item"><a class="nav-link p-2 p-lg-3" href="#" title="Settings" data-bs-toggle="modal" data-bs-target="#SettingsModal"><i class="fa fa-gear"></i></a></li>
-            <li class="nav-item d-none d-sm-block"><a class="nav-link p-2 p-lg-3" href="/logout/" title="Menu collapse"><i class="fa fa-user"></i></a></li>
+            <li class="nav-item d-none d-sm-block"><a class="nav-link p-2 p-lg-3" href="/logout/" title="Logout"><i class="fa fa-power-off"></i></a></li>
 
         </ul>
 
@@ -55,110 +52,48 @@
     <div class="sidebar px-3 py-2 py-md-3">
         <div class="d-flex flex-column h-100">
             <h4 class="sidebar-title mb-4 mt-2">CSR<span>-PHARMA</span></h4>
-            <form class="mb-2 mt-1">
+            <!--<form class="mb-2 mt-1">
                 <div class="input-group">
                     <input type="text" class="form-control border-0" placeholder="Search...">
                 </div>
-            </form>
+            </form>-->
 
             <!-- Menu: main ul -->
             <ul class="menu-list flex-grow-1">
-                <li><a class="m-link active" href="index.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                <li><a class="m-link" href="index-covid.html"><i class="fa fa-bug"></i> <span>Covid-19 Dashboard</span></a></li>
+                <li><a class="m-link active" href="/dash/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                 <li class="collapsed">
-                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-Doctor" href="#"><i class="fa fa-user-md"></i> <span>Doctor</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-user" href="#"><i class="fa fa-user"></i> <span>User</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
 
                     <!-- Menu: Sub menu ul -->
-                    <ul class="sub-menu collapse" id="menu-Doctor">
-                        <li><a class="ms-link" href="doctor-all.html">All Doctors</a></li>
-                        <li><a class="ms-link" href="doctor-add.html">Add new doctor</a></li>
-                        <li><a class="ms-link" href="doctor-profile.html">Doctors Profile</a></li>
-                        <li><a class="ms-link" href="doctor-schedule.html">Doctor Schedule</a></li>
-                        <li><a class="ms-link" href="doctor-appointment.html">Book Appointment</a></li>
+                    <ul class="sub-menu collapse" id="menu-user">
+                        <li><a class="ms-link" href="/user/">User Register</a></li>
                     </ul>
                 </li>
                 <li class="collapsed">
-                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-Patient" href="#"><i class="fa fa-user-circle-o"></i> <span>Patient</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-role" href="#"><i class="fa fa-user-circle-o"></i> <span>Roles & Permissions</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
 
                     <!-- Menu: Sub menu ul -->
-                    <ul class="sub-menu collapse" id="menu-Patient">
-                        <li><a class="ms-link" href="patient-list.html">Patient List</a></li>
-                        <li><a class="ms-link" href="patient-add.html">Add new patient</a></li>
-                        <li><a class="ms-link" href="patient-profile.html">Patient Profile</a></li>
-                        <li><a class="ms-link" href="patient-invoices.html">Patient Invoices</a></li>
+                    <ul class="sub-menu collapse" id="menu-role">
+                        <li><a class="ms-link" href="/roles/">Role Register</a></li>
                     </ul>
                 </li>
                 <li class="collapsed">
-                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-Payments" href="#"><i class="fa fa-credit-card"></i> <span>Payments</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-order" href="#"><i class="fa fa-credit-card"></i> <span>Order</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
 
                     <!-- Menu: Sub menu ul -->
-                    <ul class="sub-menu collapse" id="menu-Payments">
-                        <li><a class="ms-link" href="payments-list.html">Payments List</a></li>
-                        <li><a class="ms-link" href="payments-add.html">Add Payments</a></li>
-                        <li><a class="ms-link" href="payments-invoice.html">Single Invoice</a></li>
+                    <ul class="sub-menu collapse" id="menu-order">
+                        <li><a class="ms-link" href="/order/">Order Register</a></li>
                     </ul>
                 </li>
-                <li><a class="m-link" href="department.html"><i class="fa fa-h-square"></i> <span>Department</span></a></li>
-                <li><a class="m-link" href="room-allotment.html"><i class="fa fa-bed"></i> <span>Room Allotment</span></a></li>
+                <li class="divider mt-4 py-2 border-top"><small>REPORTS</small></li>
                 <li class="collapsed">
-                    <a class="m-link"  data-bs-toggle="collapse" data-bs-target="#menu-Authentication" href="#"><i class="fa fa-lock"></i> <span>Authentication</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
-
-                    <!-- Menu: Sub menu ul -->
-                    <ul class="sub-menu collapse" id="menu-Authentication">
-                        <li><a class="ms-link" href="auth-signin.html">Sign in</a></li>
-                        <li><a class="ms-link" href="auth-signup.html">Sign up</a></li>
-                        <li><a class="ms-link" href="auth-password-reset.html">Password reset</a></li>
-                        <li><a class="ms-link" href="auth-two-step.html">2-Step Authentication</a></li>
-                        <li><a class="ms-link" href="auth-404.html">404</a></li>
-                    </ul>
-                </li>
-                <li class="divider mt-4 py-2 border-top"><small>DOCUMENTATION</small></li>
-                <li class="collapsed">
-                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-Pages" href="#"><i class="fa fa-file"></i> <span>More Pages</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-Pages" href="#"><i class="fa fa-file"></i> <span>Order</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
 
                     <!-- Menu: Sub menu ul -->
                     <ul class="sub-menu collapse" id="menu-Pages">
-                        <li><a class="ms-link" href="../../documentation/stater-page.html">Stater page</a></li>
-                        <li><a class="ms-link" href="profile.html">Profile</a></li>
-                        <li><a class="ms-link" href="timeline.html">Timeline</a></li>
-                        <li><a class="ms-link" href="imagegallery.html">Image Gallery</a></li>
-                        <li><a class="ms-link" href="invoices.html">Invoices</a></li>
-                        <li><a class="ms-link" href="pricing.html">Pricing</a></li>
-                        <li><a class="ms-link" href="teamsboard.html">Teams Board</a></li>
-                        <li><a class="ms-link" href="faqs.html">FAQs</a></li>
-                        <li><a class="ms-link" href="../../documentation/w-cards.html">Widget's</a></li>
-                        <li><a class="ms-link" href="../../documentation/charts.html">Chart's</a></li>
-                        <li><a class="ms-link" href="../../documentation/table.html">Table Example</a></li>
+                        <li><a class="ms-link" href="/dash/">Order</a></li>
                     </ul>
                 </li>
-                <li class="collapsed">
-                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-Components" href="#"><i class="fa fa-code"></i> <span>UI Components</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
-
-                    <!-- Menu: Sub menu ul -->
-                    <ul class="sub-menu collapse" id="menu-Components">
-                        <li><a class="ms-link" href="ui-alerts.html">Alerts</a></li>
-                        <li><a class="ms-link" href="ui-badge.html">Badge</a></li>
-                        <li><a class="ms-link" href="ui-breadcrumb.html">Breadcrumb</a></li>
-                        <li><a class="ms-link" href="ui-buttons.html">Buttons</a></li>
-                        <li><a class="ms-link" href="ui-card.html">Card</a></li>
-                        <li><a class="ms-link" href="ui-carousel.html">Carousel</a></li>
-                        <li><a class="ms-link" href="ui-collapse.html">Collapse</a></li>
-                        <li><a class="ms-link" href="ui-dropdowns.html">Dropdowns</a></li>
-                        <li><a class="ms-link" href="ui-listgroup.html">List group</a></li>
-                        <li><a class="ms-link" href="ui-modal.html">Modal</a></li>
-                        <li><a class="ms-link" href="ui-navs.html">Navs</a></li>
-                        <li><a class="ms-link" href="ui-navbar.html">Navbar</a></li>
-                        <li><a class="ms-link" href="ui-pagination.html">Pagination</a></li>
-                        <li><a class="ms-link" href="ui-popovers.html">Popovers</a></li>
-                        <li><a class="ms-link" href="ui-progress.html">Progress</a></li>
-                        <li><a class="ms-link" href="ui-scrollspy.html">Scrollspy</a></li>
-                        <li><a class="ms-link" href="ui-spinners.html">Spinners</a></li>
-                        <li><a class="ms-link" href="ui-toasts.html">Toasts</a></li>
-                        <li><a class="ms-link" href="ui-tooltips.html">Tooltips</a></li>
-                    </ul>
-                </li>
-                <li><a class="m-link" href="../../documentation/index.html"><i class="fa fa-file-text"></i> <span>Documentation</span></a></li>
-                <li><a class="m-link" href="../../documentation/changelog.html"><i class="fa fa-pencil"></i> <span>Changelog</span> <span id="ALUIversion"></span></a></li>
             </ul>
 
             <!-- Menu: menu collepce btn -->
@@ -346,281 +281,6 @@
         </div>
     </div>
 
-    <!-- Modal: Search -->
-    <div class="modal fade" id="SearchModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header bg-secondary border-bottom-0 px-3 px-md-5">
-                    <h5 class="modal-title" >Search</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body custom_scroll">
-                    <div class="card-body-height py-4 px-2 px-md-4">
-                        <form class="mb-3">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <button class="btn btn-outline-secondary" type="button"><span class="fa fa-search"></span> Search</button>
-                            </div>
-                        </form>
-
-                        <small class="dropdown-header">Recent searches</small>              
-                        <div class="dropdown-item bg-transparent text-wrap my-2">
-                            <span class="h4 me-1">
-                                <a class="btn btn-sm btn-dark" href="#">Github <i class="fa fa-search ms-1"></i></a>
-                            </span>
-                            <span class="h4">
-                                <a class="btn btn-sm btn-dark" href="#">Notification panel <i class="fa fa-search ms-1"></i></a>
-                            </span>
-                            <span class="h4">
-                                <a class="btn btn-sm btn-dark" href="#">New project <i class="fa fa-search ms-1"></i></a>
-                            </span>
-                        </div>
-            
-                        <div class="dropdown-divider my-3"></div>
-                        
-                        <small class="dropdown-header">Tutorials</small>              
-                        <a class="dropdown-item py-2" href="#">
-                            <div class="d-flex align-items-center">
-                                <span class="avatar sm no-thumbnail me-2"><i class="fa fa-github"></i></span>
-                                <div class="text-truncate">
-                                    <span>How to set up Github?</span>
-                                </div>
-                            </div>
-                        </a>              
-                        <a class="dropdown-item py-2" href="#">
-                            <div class="d-flex align-items-center">
-                                <span class="avatar sm no-thumbnail me-2"><i class="fa fa-paint-brush"></i></span>
-                                <div class="text-truncate">
-                                    <span>How to change theme color?</span>
-                                </div>
-                            </div>
-                        </a>
-            
-                        <div class="dropdown-divider my-3"></div>
-            
-                        <small class="dropdown-header">Members</small>              
-                        <a class="dropdown-item py-2" href="#">
-                            <div class="d-flex align-items-center">
-                                <img class="avatar sm rounded-circle" src="../../assets/images/xs/avatar1.jpg" alt="">
-                                <div class="text-truncate ms-2">
-                                    <span>Dr. Hossein Shams <i class="fa fa-check-circle text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-original-title="Top endorsed"></i></span>
-                                </div>
-                            </div>
-                        </a>              
-                        <a class="dropdown-item py-2" href="#">
-                            <div class="d-flex align-items-center">
-                                <img class="avatar sm rounded-circle" src="../../assets/images/xs/avatar2.jpg" alt="">
-                                <div class="text-truncate ms-2">
-                                    <span>Orlando Lentz</span>
-                                </div>
-                            </div>
-                        </a>              
-                        <a class="dropdown-item py-2" href="#">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar sm rounded-circle no-thumbnail">RH</div>
-                                <div class="text-truncate ms-2">
-                                    <span>Brian Swader</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Layout -->
-    <div class="modal fade" id="LayoutModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-vertical modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Ready to build Layouts</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body custom_scroll">
-                    <div class="mb-4">Customize your overview page layout. Choose the one that best fits your needs.</div>
-                    <h5 class="mt-5 pb-2">Left sidebar with icon</h5>
-                    <div class="row g-3">
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift border border-primary bg-primary text-light" href="index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-default.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Default</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="index-mini-sidebar.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-mini-sidebar.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Default + Menu Collapse</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-c/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-c.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Menu + Tab view</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-g/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-g.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Icon menu with Grid view</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-i/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-i.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Dual tone icon + menu list</h6>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <h5 class="mt-5 pb-2">Header top menu</h5>
-                    <div class="row g-3">
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-d/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-d.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Header <span class="text-muted small">(Fluid)</span></h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-d-container/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-d-container.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Header <span class="text-muted small">(Container)</span></h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-d-sub-header/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-d-sub-header.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Header + Sub menu <span class="text-muted small">(Fluid)</span></h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-d-sub-header-container/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-d-sub-header-container.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Header + Submenu <span class="text-muted small">(Container)</span></h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-f/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-f.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Header + Submenu, Overlay <span class="text-muted small">(Fluid)</span></h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-f-container/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-f-container.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Header + Submenu, Overlay <span class="text-muted small">(Container)</span></h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-l/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-l.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Megamenu + Animation Overlay</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-q/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-q.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Header + Megamenu sticky</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-o/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-o.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Header + Full Menu sticky</h6>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <h5 class="mt-5 pb-2">Content Combinations</h5>
-                    <div class="row g-3">
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-b/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-b.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Default</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-e/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-e.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Default</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-h/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-h.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Default</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-k/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-k.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Body Overlay</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-p/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-p.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Background BG</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-n/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-n.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Sidebar with Tab</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <a class="card lift" href="layout-m/index.html">
-                                <img class="card-img-top" src="../../assets/images/layout/layout-m.svg" alt="" />
-                                <div class="card-body text-center">
-                                    <h6 class="card-title mb-0">Sidebar with Header <span class="small">(Fixed)</span></h6>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal: Setting -->
     <div class="modal fade" id="SettingsModal" tabindex="-1">
         <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
@@ -780,5 +440,6 @@
 <!-- Jquery Page Js -->
 <script src="{{ public_path().'/js/template.js' }}"></script>
 <script src="{{ public_path().'/js/page/index.js' }}"></script>
+<script src="{{ public_path().'/js/script.js' }}"></script>
 </body>
 </html>
