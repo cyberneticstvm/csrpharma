@@ -6,7 +6,7 @@
         <div class="row align-items-center">
             <div class="col">
                 <!--<small class="text-muted">Welcome</small>-->
-                <h1 class="h4 mt-1">Edit Role</h1>
+                <h1 class="h4 mt-1">Update Role</h1>
             </div>
         </div> <!-- Row end  -->
     </div>

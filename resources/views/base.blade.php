@@ -12,6 +12,9 @@
 
     <!-- plugin css file  -->
     <link rel="stylesheet" href="{{ public_path().'/css/dataTables.min.css' }}">
+    <link rel="stylesheet" href="{{ public_path().'/css/select2.min.css' }}">
+    <link rel="stylesheet" href="{{ public_path().'/datepicker/pickadate.css' }}">
+    <link rel="stylesheet" href="{{ public_path().'/datepicker/daterangepicker.css' }}">
     
     <!-- project css file  -->
     <link rel="stylesheet" href="{{ public_path().'/css/al.style.min.css' }}">
@@ -78,11 +81,32 @@
                     </ul>
                 </li>
                 <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-admin" href="#"><i class="fa fa-user-circle-o"></i> <span>Administration</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
+
+                    <!-- Menu: Sub menu ul -->
+                    <ul class="sub-menu collapse" id="menu-admin">
+                        <li><a class="ms-link" href="/manufacturer/">Supplier / Manufacturer Register</a></li>
+                        <li><a class="ms-link" href="/molecule/">Molecule Register</a></li>
+                    </ul>
+                </li>
+                <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-inventory" href="#"><i class="fa fa-user-circle-o"></i> <span>Inventory</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
+
+                    <!-- Menu: Sub menu ul -->
+                    <ul class="sub-menu collapse" id="menu-inventory">
+                        <li><a class="ms-link" href="/category/">Category Register</a></li>
+                        <li><a class="ms-link" href="/subcategory/">Subategory Register</a></li>
+                        <li><a class="ms-link" href="/product/">Product Register</a></li>
+                        <li><a class="ms-link" href="/stock/">Stock Register</a></li>
+                    </ul>
+                </li>
+                <li class="collapsed">
                     <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-order" href="#"><i class="fa fa-credit-card"></i> <span>Order</span> <span class="arrow fa fa-dot-circle-o ms-auto text-end"></span></a>
 
                     <!-- Menu: Sub menu ul -->
                     <ul class="sub-menu collapse" id="menu-order">
                         <li><a class="ms-link" href="/order/">Order Register</a></li>
+                        <li><a class="ms-link" href="/invoice/">Invoice Register</a></li>
                     </ul>
                 </li>
                 <li class="divider mt-4 py-2 border-top"><small>REPORTS</small></li>
@@ -435,7 +459,11 @@
 
 <!-- Plugin Js -->
 <script src="{{ public_path().'/bundles/apexcharts.bundle.js' }}"></script>
+<script src="{{ public_path().'/bundles/select2.bundle.js' }}"></script>
 <script src="{{ public_path().'/bundles/dataTables.bundle.js' }}"></script>
+<script src="{{ public_path().'/datepicker/picker.js' }}"></script>
+<script src="{{ public_path().'/datepicker/picker.date.js' }}"></script>
+<script src="{{ public_path().'/datepicker/picker.time.js' }}"></script>
 
 <!-- Jquery Page Js -->
 <script src="{{ public_path().'/js/template.js' }}"></script>

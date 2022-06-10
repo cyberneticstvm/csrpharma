@@ -6,7 +6,7 @@
         <div class="row align-items-center">
             <div class="col">
                 <!--<small class="text-muted">Welcome</small>-->
-                <h1 class="h4 mt-1">Edit User</h1>
+                <h1 class="h4 mt-1">Update User</h1>
             </div>
         </div> <!-- Row end  -->
     </div>
@@ -15,18 +15,13 @@
     <div class="container">        
         <div class="row g-4">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="d-flex flex-wrap justify-content-between align-items-end">
-                    <div class="mb-3">
-                        <h5 class="mb-0">Basic Information</h5>
-                        <!--<span class="text-muted">Description text here...</span>-->
-                    </div>
-                </div>
                 <div class="card">
                     <div class="card-body">
                         <form method="post" action="{{ route('user.update', $user->id) }}">
                             @csrf
                             @method("PUT")
                             <div class="row g-4">
+                                <h6 class="text-primary">Basic Information</h6>
                                 <div class="col-sm-3">
                                     <label class="form-label">Name <span class="req">*</span></label>
                                     <input type="text" class="form-control" name="name" value="{{ $user->name }}" placeholder="Name">
@@ -62,6 +57,53 @@
                                     <small class="text-danger">{{ $errors->first('roles') }}</small>
                                     @enderror
                                 </div>
+                            </div>
+                            <div class="row mt-1 g-4">
+                                <h6 class="text-primary">Store Details</h6>
+                                <div class="col-sm-4">
+                                    <label class="form-label">Store Name</label>
+                                    <input type="text" class="form-control" name="store_name" value="{{ $user->store_name }}" placeholder="Store Name">
+                                    @error('store_name')
+                                    <small class="text-danger">{{ $errors->first('store_name') }}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="form-label">Store Contact No.</label>
+                                    <input type="text" class="form-control" name="store_contact" value="{{ $user->store_contact }}" placeholder="Store Contact No.">
+                                    @error('store_contact')
+                                    <small class="text-danger">{{ $errors->first('store_contact') }}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Store Address</label>
+                                    <input type="text" class="form-control" name="store_address" value="{{ $user->store_address }}" placeholder="Store Address">
+                                    @error('store_address')
+                                    <small class="text-danger">{{ $errors->first('store_address') }}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="form-label">Store GSTIN</label>
+                                    <input type="text" class="form-control" name="store_gstin" value="{{ $user->store_gstin }}" placeholder="Store GSTIN">
+                                    @error('store_gstin')
+                                    <small class="text-danger">{{ $errors->first('store_gstin') }}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="form-label">Drug Licence No.</label>
+                                    <input type="text" class="form-control" name="drn" value="{{ $user->drn }}" placeholder="Drug Licence No.">
+                                    @error('drn')
+                                    <small class="text-danger">{{ $errors->first('drn') }}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="form-label">Credit Limit</label>
+                                    <input type="number" class="form-control" name="credit_limit" value="{{ $user->credit_limit }}" placeholder="0.00">
+                                    @error('credit_limit')
+                                    <small class="text-danger">{{ $errors->first('credit_limit') }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mt-1 g-4">
                                 <div class="col-sm-12 text-end">
                                     <button type="submit" class="btn btn-submit btn-primary">UPDATE</button>
                                     <button type="button" onClick="history.back()" class="btn btn-warning">CANCEL</button>

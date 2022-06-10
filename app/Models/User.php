@@ -23,6 +23,13 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'store_name',
+        'store_contact',
+        'store_address',
+        'store_gstin',
+        'drn',
+        'credit_limit',
+        'created_by'
     ];
 
     /**

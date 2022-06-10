@@ -19,8 +19,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    function __construct()
-    {
+    function __construct(){
          $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','store','show']]);
          $this->middleware('permission:user-create', ['only' => ['create','store']]);
          $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
@@ -82,7 +81,7 @@ class UserController extends Controller
         ]);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-    
+        $input['created_by'] = $request->user()->id;
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
     
@@ -138,8 +137,9 @@ class UserController extends Controller
         }else{
             $input = Arr::except($input,array('password'));    
         }
-    
+        
         $user = User::find($id);
+        $input['created_by'] = $user->getOriginal('created_by');
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
     
