@@ -62,6 +62,8 @@ class ProductController extends Controller
             'product_name' => 'required',
             'molecule_id' => 'required',
             'manufacturer_id' => 'required',
+            'cgst' => 'required',
+            'sgst' => 'required'
         ]);
         $input = $request->all();
         $input['created_by'] = $request->user()->id;
@@ -113,6 +115,8 @@ class ProductController extends Controller
             'product_name' => 'required',
             'molecule_id' => 'required',
             'manufacturer_id' => 'required',
+            'cgst' => 'required',
+            'sgst' => 'required'
         ]);
         $input = $request->all();
         $product = Product::find($id);

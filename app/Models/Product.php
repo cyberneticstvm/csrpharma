@@ -17,6 +17,8 @@ class Product extends Model
         'product_description',
         'sku',
         'hsn',
+        'cgst',
+        'sgst',
         'molecule_id',
         'manufacturer_id',
         'created_by',

@@ -63,7 +63,21 @@
                                     <small class="text-danger">{{ $errors->first('hsn') }}</small>
                                     @enderror
                                 </div>
-                                <div class="col-sm-12">
+                                <div class="col-sm-2">
+                                    <label class="form-label">CGST % <span class="req">*</span></label>
+                                    <input type="number" class="form-control" name="cgst" step="1" min="0" max="100" value="{{ old('cgst') }}" placeholder="0%">
+                                    @error('cgst')
+                                    <small class="text-danger">{{ $errors->first('cgst') }}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="form-label">SGST % <span class="req">*</span></label>
+                                    <input type="number" class="form-control" name="sgst" step="1" min="0" max="100" value="{{ old('sgst') }}" placeholder="0%">
+                                    @error('sgst')
+                                    <small class="text-danger">{{ $errors->first('sgst') }}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-8">
                                     <label class="form-label">Product Description / Remarks / notes </label>
                                     <input type="text" class="form-control" name="product_description" value="{{ old('product_description') }}" placeholder="Product Description / Remarks / notes">
                                     @error('product_description')
