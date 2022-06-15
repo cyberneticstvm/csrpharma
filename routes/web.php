@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HelperController;
 use App\Http\Controllers\ManufacturerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\MoleculeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,10 @@ Route::group(['middleware' => ['auth']], function(){
         return view('dash');
     })->name('dash');
     Route::get('/logout/', 'App\Http\Controllers\UserController@userlogout');
+
+    // helper //
+    Route::get('/helper/product/', 'App\Http\Controllers\HelperController@products');
+    // end helper //
 
     // roles and permissions //
     Route::get('/roles/', 'App\Http\Controllers\RoleController@index')->name('role.index');
@@ -92,5 +98,14 @@ Route::group(['middleware' => ['auth']], function(){
     Route::put('/product/edit/{id}/', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/product/delete/{id}/', [ProductController::class, 'destroy'])->name('product.delete');
     // end product //
+
+    // stock //
+    Route::get('/stock/', [StockController::class, 'index'])->name('stock.index');
+    Route::get('/stock/create/', [StockController::class, 'create'])->name('stock.create');
+    Route::post('/stock/create/', [StockController::class, 'store'])->name('stock.save');
+    Route::get('/stock/edit/{id}/', [StockController::class, 'edit'])->name('stock.edit');
+    Route::put('/stock/edit/{id}/', [StockController::class, 'update'])->name('stock.update');
+    Route::delete('/stock/delete/{id}/', [StockController::class, 'destroy'])->name('stock.delete');
+    // end stock //
 
 });
